@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>/eleventy-base-blog/blog/</loc>
+		<loc>/site/blog/</loc>
 		<lastmod>2024-12-11</lastmod>
 	</url>
 	
 	<url>
-		<loc>/eleventy-base-blog/</loc>
+		<loc>/site/</loc>
 		<lastmod>2024-12-11</lastmod>
 	</url>
 	
 	<url>
-		<loc>/eleventy-base-blog/tags/</loc>
+		<loc>/site/tags/</loc>
 		<lastmod>2024-12-11</lastmod>
 	</url>
 </urlset>
