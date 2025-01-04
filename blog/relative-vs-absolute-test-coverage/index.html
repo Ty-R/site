@@ -3,22 +3,177 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Practical QA</title>
-		<meta name="description" content="">
+		<title>Relative vs Absolute Test Coverage</title>
+		<meta name="description" content="Avoiding a false sense of quality">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Practical QA">
 		
-		<style>/* Message Box */
-.message-box {
-	/* --color-message-box: rgb(204, 255, 247); */
-	--color-message-box: #082840;
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
 
-	display: block;
-	background-color: var(--color-message-box);
-	color: var(--color-gray-90);
-	padding: 1em 0.625em; /* 16px 10px /16 */
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
-.message-box ol {
-	margin-top: 0;
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
 }
 /* This is an arbitrary CSS string added to the bundle */
 /* Defaults */
@@ -307,25 +462,28 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
+<h1 id="relative-vs-absolute-test-coverage">Relative vs Absolute Test Coverage</h1>
 
-<h1 id="tags">Tags</h1>
-
-<ul>
-
-	
-	<li><a href="/site/tags/frontend-testing/" class="post-tag">Frontend testing</a></li>
-
-	
-	<li><a href="/site/tags/qa-processes/" class="post-tag">QA processes</a></li>
-
-	
-	<li><a href="/site/tags/performance-testing/" class="post-tag">Performance testing</a></li>
-
-	
+<ul class="post-metadata">
+	<li><time datetime="2024-12-13">13 December 2024</time></li>
+	<li><a href="/site/tags/qa-processes/" class="post-tag">QA processes</a>, </li>
+	<li><a href="/site/tags/frontend-testing/" class="post-tag">Frontend testing</a>, </li>
 	<li><a href="/site/tags/backend-testing/" class="post-tag">Backend testing</a></li>
-
 </ul>
 
+<p>When discussing test coverage, it’s important to distinguish between two concepts: <strong>absolute coverage</strong> and <strong>relative coverage</strong>. Misunderstanding or failing to communicate the distinction can lead to a false sense of quality and misplaced confidence in testing outcomes.</p>
+<h2 id="absolute-coverage">Absolute Coverage</h2>
+<p>Absolute coverage measures testing against every possible scenario that could occur in the system. This includes every input, every configuration, every edge case, and every combination of conditions.</p>
+<p>This is often impractical, if not impossible to work against.</p>
+<h2 id="relative-coverage">Relative Coverage</h2>
+<p>Relative coverage measures testing against a subset of scenarios that are known and considered relevant. This is typically what teams refer to when they report on coverage, such as the percentage of critical paths or features that are tested.</p>
+<p>This is often what we default to when conveying coverage.</p>
+<h2 id="danger-of-miscommunication">Danger of Miscommunication</h2>
+<p>One common pitfall is reporting relative coverage without making it clear that it is not absolute. For example, a tester might say, “My smoke pack has 100% coverage and all tests pass.” At face value, this sounds reassuring, but without clarification, stakeholders might interpret this as absolute coverage and assume the system is entirely fault-free.</p>
+<p>In reality, our tests are likely based against a subset of known features, behaviours, or paths and this is what the coverage is measured against; we should aim to provide this additional context whenever reporting on test outcomes regardless of how obvious we, as testers, may think it is.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/test-scope-creep/">Test Scope Creep</a></li><li class="links-nextprev-next">Next →<br><a href="/site/blog/continuous-performance-feedback/">Continuous Performance Feedback</a></li>
+</ul>
 
 			</heading-anchors>
 		</main>
@@ -334,7 +492,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/tags/` was built on 2025-01-04T18:12:10.299Z -->
+		<!-- This page `/blog/relative-vs-absolute-test-coverage/` was built on 2025-01-04T18:12:10.301Z -->
 		<script type="module" src="/site/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

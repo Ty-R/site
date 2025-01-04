@@ -2,17 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
+		<loc>/site/blog/test-scope-creep/</loc>
+		<lastmod>2024-12-10</lastmod>
+	</url>
+	
+	<url>
+		<loc>/site/blog/relative-vs-absolute-test-coverage/</loc>
+		<lastmod>2024-12-13</lastmod>
+	</url>
+	
+	<url>
+		<loc>/site/blog/continuous-performance-feedback/</loc>
+		<lastmod>2024-12-19</lastmod>
+	</url>
+	
+	<url>
+		<loc>/site/blog/component-libraries-and-page-object-models/</loc>
+		<lastmod>2024-12-28</lastmod>
+	</url>
+	
+	<url>
+		<loc>/site/blog/definition-of-ready-for-test/</loc>
+		<lastmod>2024-12-29</lastmod>
+	</url>
+	
+	<url>
+		<loc>/site/blog/quality-theatre/</loc>
+		<lastmod>2025-01-01</lastmod>
+	</url>
+	
+	<url>
 		<loc>/site/blog/</loc>
-		<lastmod>2024-12-11</lastmod>
+		<lastmod>2025-01-04</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/</loc>
-		<lastmod>2024-12-11</lastmod>
+		<lastmod>2025-01-04</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/tags/</loc>
-		<lastmod>2024-12-11</lastmod>
+		<lastmod>2025-01-04</lastmod>
 	</url>
 </urlset>
