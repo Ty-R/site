@@ -3,3 +3,7 @@ node_modules/
 package-lock.json
 .cache
 .editorconfig
+
+# Not ready.
+developer-vs-tester-responsibilities.md
+contract-testing.md

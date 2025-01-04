@@ -1,5 +1,5 @@
 export default {
-	title: "TBD",
+	title: "Practical QA",
 	url: "",
 	language: "en",
 	description: "",
