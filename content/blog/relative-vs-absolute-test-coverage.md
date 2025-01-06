@@ -2,7 +2,7 @@
 title: Relative vs Absolute Test Coverage
 description: Avoiding a false sense of quality
 date: 2024-12-13
-tags: ['QA processes', 'Frontend testing', 'Backend testing']
+tags: ['Process Improvement']
 ---
 
 When discussing test coverage, it’s important to distinguish between two concepts: **absolute coverage** and **relative coverage**. Misunderstanding or failing to communicate the distinction can lead to a false sense of quality and misplaced confidence in testing outcomes.

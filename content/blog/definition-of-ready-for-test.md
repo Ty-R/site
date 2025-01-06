@@ -2,7 +2,7 @@
 title: Definition of Ready for Test
 description: Unblurring the line between dev and test
 date: 2024-12-29
-tags: QA processes
+tags: ['Process Improvement']
 ---
 
 The production line of many teams flows through development and testing stages, but between these often lies an ambiguous "grey area" where responsibilities blur and assumptions creep in.

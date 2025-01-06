@@ -2,7 +2,7 @@
 title: Test Scope Creep
 description: Bringing QA back down to earth
 date: 2024-12-10
-tags: ['QA processes', 'Frontend testing', 'Backend testing']
+tags: ['Process Improvement']
 ---
 
 In project management, "scope creep" happens when new features, requirements, or ideas keep getting added during the development process.

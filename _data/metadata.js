@@ -2,7 +2,7 @@ export default {
 	title: "Practical QA",
 	url: "",
 	language: "en",
-	description: "",
+	description: "A space for sharing thoughts, opinions, and advice on software testing and quality assurance.",
 	author: {
 		name: "",
 		email: "",

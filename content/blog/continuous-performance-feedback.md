@@ -2,7 +2,7 @@
 title: Continuous Performance Feedback
 description: Measuring performance every step of the way
 date: 2024-12-19
-tags: ['QA processes', 'Performance testing']
+tags: ['Performance testing']
 ---
 
 Performance testing is an umbrella term and encompasses any activity measuring performance or identifying performance-impacting factors, but often when talking about performance testing, our minds will jump to the macro - load or stress testing.

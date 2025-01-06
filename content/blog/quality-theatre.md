@@ -2,7 +2,7 @@
 title: Quality Theatre
 description: When QA becomes more about performance
 date: 2025-01-01
-tags: QA processes
+tags: ['Process Improvement']
 ---
 
 There exists a phenomenon known as "Security Theatre" which is briefly described as practices that create the illusion of security without necessarily making anyone safer; it's more about the "performance" than the practicality – convincing people that something is being done regardless of efficacy.
