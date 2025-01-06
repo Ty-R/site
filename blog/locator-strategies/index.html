@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Component Libraries and Page Object Models</title>
-		<meta name="description" content="Extending a common design pattern">
+		<title>Locator Strategies</title>
+		<meta name="description" content="Understanding the importantance of locators">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Practical QA">
 		
 		<style>/**
@@ -463,57 +463,43 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="component-libraries-and-page-object-models">Component Libraries and Page Object Models</h1>
+<h1 id="locator-strategies">Locator Strategies</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-12-28">28 December 2024</time></li>
+	<li><time datetime="2025-01-06">06 January 2025</time></li>
 	<li><a href="/site/tags/frontend-testing/" class="post-tag">Frontend testing</a></li>
 </ul>
 
-<p>Writing automated tests for an application's frontend often involves a UI driver to handle interactions with the interface. A widely adopted design pattern to structure this test code is the <strong>Page Object Model</strong>.</p>
-<p>Modern web applications frequently use reusable component libraries (think buttons, modals, or dropdowns that appear on multiple pages). Test frameworks often don’t reflect this reuse, and page objects may contain duplicate interaction logic as a result.</p>
-<h2 id="component-models">Component Models</h2>
-<p>To reduce this duplication, we can extend the Page Object Model pattern to create <strong>Component Models</strong>. Just like page objects, these would encapsulate interactions, but at the component level. These component objects would then be imported into page object models so that they can be exercised in the context of a particular page.</p>
-<h3 id="example-button-component">Example: Button Component</h3>
-<p>Let’s say your application uses a custom button component that is used across multiple pages. Traditionally, we might reflect this in test code by defining the interaction within the respective page objects:</p>
-<pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token comment">// In Page Object A</span>
-<span class="token keyword">async</span> <span class="token function">clickSaveButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>page<span class="token punctuation">.</span><span class="token function">getByLabel</span><span class="token punctuation">(</span><span class="token string">'Save'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<p>To interact with a page element using a UI driver, it needs to be told how to find it; this is done through &quot;locators&quot;, for example, to click a submit button:</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">getByLabel</span><span class="token punctuation">(</span><span class="token string">'Submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Certain locators will be faster and more reliable than others, and they can generally be broken down into four categories:</p>
+<div style="display: flex; gap: 1rem;">
+    <div style="flex: 1;">
+        <strong>User-Facing (Recommended)</strong>
+        <p>Labels and text content may seem brittle and likely to change over time, but these attributes closely reflect what real users interact with. Tests using user-facing locators provide the highest levels of assurance by simulating actual user behaviour</p>
+    </div>
+    <div style="flex: 1;">
+        <strong>Data Attributes (Recommended)</strong>
+        <p>Test IDs are data attributes often used to improve reliability of automated tests; this is perfectly fine, but relying exclusively on data attributes might overlook potential issues like typos or layout problems that real users could encounter</p>
+    </div>
+</div>
+<br>
+<div style="display: flex; gap: 1rem;">
+    <div style="flex: 1;">
+        <strong>Structural Attributes (Acceptable)</strong>
+        <p>IDs and classes are acceptable as locators but generally discouraged. These attributes are closely tied to the implementation details of the application and are prone to change as the UI evolves</p>
+    </div>
+    <div style="flex: 1;">
+        <strong>XPath (Last Resort)</strong>
+        <p>XPath can be used for complex queries where other strategies fall short, but this is not a positive. In most cases, simple XPath can be replaced with standard CSS selectors which are not only more readable, but faster. When a test requires a complex XPath query, it's often a smell - the test might be doing too much, or the testability of the application is lacking</p>
+    </div>
+</div>
+<h2 id="advice">Advice</h2>
+<p>Ultimately, tests exist to provide assurace, so it's in the best interest of the business to support them. Slow, or unreliable tests as a result of poor locator practices are common, but we as QA Engineers should not just accept this, and workaround it, but push for the business to meet in the middle.</p>
+<p>One example of this might be bringing up testability during planning or refinment, such as requesting that data attributes are added as part of the feature's acceptance criteria.</p>
+<p>If writing complex locators, it is always worth stepping back and considering whether the test is trying to cover too much, or if the UI can be made more test-friendly.</p>
 
-<span class="token comment">// In Page Object B</span>
-<span class="token keyword">async</span> <span class="token function">clickSaveButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>page<span class="token punctuation">.</span><span class="token function">getByLabel</span><span class="token punctuation">(</span><span class="token string">'Save'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p>Of course, if the component changes in a way that requires us to update our test code, we'd need to update all occurrences. Instead, we can separate it out into a component object, then import it:</p>
-<pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token comment">// Button Component Model</span>
-<span class="token keyword">class</span> <span class="token class-name">SaveButton</span> <span class="token punctuation">{</span>
-    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>page <span class="token operator">=</span> page<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">async</span> <span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>page<span class="token punctuation">.</span><span class="token function">getByLabel</span><span class="token punctuation">(</span><span class="token string">'Save'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token comment">// Page Object A</span>
-<span class="token keyword">const</span> saveButton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SaveButton</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
-saveButton<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// Page Object B</span>
-<span class="token keyword">const</span> saveButton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SaveButton</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
-saveButton<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="benefits-of-component-models">Benefits of Component Models</h2>
-<p>Similar to Page Object Models, some benefits of this approach include reduced duplication, increased maintainability, and usability.</p>
-<h2 id="caveat">Caveat</h2>
-<p>There are a few things to consider if following, or planning to follow this model:</p>
-<ul>
-<li>Not all components are reused, and some may be exclusive to a page. It is up to you whether these should be separated into component models, or defined within a page object</li>
-<li>It is not uncommon for components to be nested (think a button in a header). The granularity of component models is going to be situational</li>
-</ul>
-
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/continuous-performance-feedback/">Continuous Performance Feedback</a></li><li class="links-nextprev-next">Next →<br><a href="/site/blog/definition-of-ready-for-test/">Definition of Ready for Test</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/quality-theatre/">Quality Theatre</a></li>
 </ul>
 
 			</heading-anchors>
@@ -523,7 +509,7 @@ saveButton<span class="token punctuation">.</span><span class="token function">c
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/component-libraries-and-page-object-models/` was built on 2025-01-06T17:05:03.590Z -->
+		<!-- This page `/blog/locator-strategies/` was built on 2025-01-06T17:05:03.591Z -->
 		<script type="module" src="/site/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

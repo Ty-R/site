@@ -32,17 +32,27 @@
 	</url>
 	
 	<url>
+		<loc>/site/blog/locator-strategies/</loc>
+		<lastmod>2025-01-06</lastmod>
+	</url>
+	
+	<url>
+		<loc>/site/about/</loc>
+		<lastmod>2025-01-06</lastmod>
+	</url>
+	
+	<url>
 		<loc>/site/blog/</loc>
-		<lastmod>2025-01-04</lastmod>
+		<lastmod>2025-01-06</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/</loc>
-		<lastmod>2025-01-04</lastmod>
+		<lastmod>2025-01-06</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/tags/</loc>
-		<lastmod>2025-01-04</lastmod>
+		<lastmod>2025-01-06</lastmod>
 	</url>
 </urlset>
