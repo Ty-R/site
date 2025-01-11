@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Test Scope Creep</title>
-		<meta name="description" content="Bringing QA back down to earth">
+		<title>Quality vs Quality Assurance</title>
+		<meta name="description" content="Why the distinction matters">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Practical QA">
 		
 		<style>/**
@@ -463,30 +463,46 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="test-scope-creep">Test Scope Creep</h1>
+<h1 id="quality-vs-quality-assurance">Quality vs Quality Assurance</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-12-10">10 December 2024</time></li>
+	<li><time datetime="2024-12-17">17 December 2024</time></li>
 	<li><a href="/site/tags/process-improvement/" class="post-tag">Process Improvement</a></li>
 </ul>
 
-<p>In project management, &quot;scope creep&quot; happens when new features, requirements, or ideas keep getting added during the development process.</p>
-<p>In the testing world, this typically translates to over-testing -- a tendency to expand testing efforts beyond what is necessary or valuable.</p>
-<h2 id="test-approaches-that-suffer">Test Approaches That Suffer</h2>
-<p>In my experience, the test approaches that are generally impacted are:</p>
+<p>The difference between Quality and Quality Assurance may seem obvious, but in practice, the lines often blur, especially when strategising or measuring success.</p>
+<div style="display: flex; gap: 1rem;">
+    <div style="flex: 1;">
+        <strong>Quality</strong>
+        <p>The standard of the end product, how well it meets requirements and user expectations (think function, usability, performance, accessiblity)</p>
+    </div>
+    <div style="flex: 1;">
+        <strong>Quality Assurance</strong>
+        <p>The process(es) of ensuring quality by testing, monitoring, and refining to generally prevent defects and improve reliability</p>
+    </div>
+</div>
+<p>Simply put - <strong>Quality</strong> is the end result; <strong>QA</strong> is the process to achieve it. This distinction is important when defining what success looks like.</p>
+<p>Here are some metrics that are often tied to quality, but shouldn't be mistaken for quality itself:</p>
 <ul>
-<li>Regression tests</li>
-<li>End-to-end tests</li>
-<li>Smoke tests</li>
+<li>Test coverage percentage</li>
+<li>Issue/defect count</li>
+<li>Story points delivered</li>
+<li>Automated test execution rates</li>
+<li>Deployment frequency</li>
 </ul>
-<p>Regression tests often fall victim to quantity over quality, while end-to-end and smoke tests often suffer from &quot;bloat&quot; given the temptation to add quick checks to a test that is already in the area.</p>
-<p>The root causes of these issues often include poor communication between testing stages, insufficient earlier test efforts, unclear prioritisation, or a general lack of trust in prior testing, environment configurations, or deployment processes.</p>
-<h2 id="staying-focused">Staying Focused</h2>
-<p>To avoid test scope creep and stay focused, teams need to establish a disciplined approach to their testing efforts. Start by clearly defining the objectives for each type of test and agreeing on the critical paths or features that require the most attention. Risk-based prioritisation is an effective tool here, allowing teams to focus their efforts where they will have the greatest impact.</p>
-<p>Regular communication is also essential. Teams must align on the purpose of each test phase and avoid duplication by maintaining a shared understanding of what has already been covered.</p>
-<p>Tests should also be regularly reviewed, pruned, and updated to stay relevant and effective.</p>
+<p>While these may not represent quality directly, they can be used to measure the strength of a QA process -- as a result of high test coverage, more frequent deployments, fewer reported issues, we'd <strong><em>expect</em></strong> a higher-quality product, but to be sure, we'd need additional metrics.</p>
+<h2 id="measuring-quality">Measuring Quality</h2>
+<p>Quality itself is often a challenge to measure as it's context-dependent, but here are some common approaches:</p>
+<ul>
+<li>User feedback or customer satisfaction</li>
+<li>User retention rates</li>
+<li>Defect escape rates</li>
+<li>System up-time, response times, and similar performance metrics</li>
+<li>Accessiblity audits and compliance adherence</li>
+<li>DORA metrics (failure rates, recovery times)</li>
+</ul>
 
-<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/site/blog/relative-vs-absolute-test-coverage/">Relative vs Absolute Test Coverage</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/relative-vs-absolute-test-coverage/">Relative vs Absolute Test Coverage</a></li><li class="links-nextprev-next">Next →<br><a href="/site/blog/continuous-performance-feedback/">Continuous Performance Feedback</a></li>
 </ul>
 
 			</heading-anchors>
@@ -496,7 +512,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/test-scope-creep/` was built on 2025-01-11T12:55:03.233Z -->
+		<!-- This page `/blog/quality-vs-quality-assurance/` was built on 2025-01-11T12:55:03.232Z -->
 		<script type="module" src="/site/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

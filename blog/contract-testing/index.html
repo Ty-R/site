@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Test Scope Creep</title>
-		<meta name="description" content="Bringing QA back down to earth">
+		<title>Contract Testing</title>
+		<meta name="description" content="A smarter way to test integrations">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Practical QA">
 		
 		<style>/**
@@ -463,30 +463,30 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="test-scope-creep">Test Scope Creep</h1>
+<h1 id="contract-testing">Contract Testing</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-12-10">10 December 2024</time></li>
-	<li><a href="/site/tags/process-improvement/" class="post-tag">Process Improvement</a></li>
+	<li><time datetime="2025-01-11">11 January 2025</time></li>
+	<li><a href="/site/tags/integration-testing/" class="post-tag">Integration testing</a>, </li>
+	<li><a href="/site/tags/api-testing/" class="post-tag">API testing</a></li>
 </ul>
 
-<p>In project management, &quot;scope creep&quot; happens when new features, requirements, or ideas keep getting added during the development process.</p>
-<p>In the testing world, this typically translates to over-testing -- a tendency to expand testing efforts beyond what is necessary or valuable.</p>
-<h2 id="test-approaches-that-suffer">Test Approaches That Suffer</h2>
-<p>In my experience, the test approaches that are generally impacted are:</p>
-<ul>
-<li>Regression tests</li>
-<li>End-to-end tests</li>
-<li>Smoke tests</li>
-</ul>
-<p>Regression tests often fall victim to quantity over quality, while end-to-end and smoke tests often suffer from &quot;bloat&quot; given the temptation to add quick checks to a test that is already in the area.</p>
-<p>The root causes of these issues often include poor communication between testing stages, insufficient earlier test efforts, unclear prioritisation, or a general lack of trust in prior testing, environment configurations, or deployment processes.</p>
-<h2 id="staying-focused">Staying Focused</h2>
-<p>To avoid test scope creep and stay focused, teams need to establish a disciplined approach to their testing efforts. Start by clearly defining the objectives for each type of test and agreeing on the critical paths or features that require the most attention. Risk-based prioritisation is an effective tool here, allowing teams to focus their efforts where they will have the greatest impact.</p>
-<p>Regular communication is also essential. Teams must align on the purpose of each test phase and avoid duplication by maintaining a shared understanding of what has already been covered.</p>
-<p>Tests should also be regularly reviewed, pruned, and updated to stay relevant and effective.</p>
+<p>In a microservice world, it's not uncommon to end up with many services that communicate and depend on one another, and for those services to be maintained by independent teams. It is also not uncommon for teams to create mock dependencies so that they can evolve their service without dependeding on, or interfering with, other teams.</p>
+<p>Mock dependencies are often time-consuming to create and maintain, and they don't always provide the confidence needed about the system's final behaviour. This usually forces us to rely on extensive end-to-end testing for feedback which simply isn't scalable.</p>
+<h2 id="a-better-way">A Better Way</h2>
+<p>One way to solve this is through <strong>consumer driven contract testing</strong> - an approach that <em>ensures</em> two separate services are compatible by requiring both sides to come to a consensus on the allowed set of interactions between them.</p>
+<p>This works by having a test that captures expected interactions (requests, responses) from a consumer's perspective, and making them separately accessible to the provider so that it can replay those interactions against itself without needing the consumer, or independent mocks.</p>
+<picture><source type="image/avif" srcset="/site/blog/contract-testing/YPpEGiD-ly-731.avif 731w"><source type="image/webp" srcset="/site/blog/contract-testing/YPpEGiD-ly-731.webp 731w"><img loading="lazy" decoding="async" alt="basic contract test overview" src="/site/blog/contract-testing/YPpEGiD-ly-731.png" width="731" height="341"></picture>
+<h2 id="what-isnt-being-tested">What <em>Isn't</em> Being Tested</h2>
+<p>Contract testing is purely focused on guarding against <em>contract violations</em> within the messages being exchanged between services. It is not really suitable for anything beyond this, such as functional testing.</p>
+<p>It is typically the responsiblity of the respective team to ensure their service builds and sends messages as expected, and handles what is done with the data recieved.</p>
+<picture><source type="image/avif" srcset="/site/blog/contract-testing/JLiUTNE4JR-1768.avif 1768w"><source type="image/webp" srcset="/site/blog/contract-testing/JLiUTNE4JR-1768.webp 1768w"><img loading="lazy" decoding="async" alt="contract test scope" src="/site/blog/contract-testing/JLiUTNE4JR-1768.png" width="1768" height="884"></picture>
+<h2 id="conclusion">Conclusion</h2>
+<p>This approach allows testing actual consumer expectations against actual provider capabilities with reduced reliance on mocks without needing to deploy. This allows teams to independently evolve their services and get near instant feedback on how those changes impact neighbouring services.</p>
+<p>Tools like Pact make setting this up very straight forward, and provide a lot more utilities around this, such as deployability of changes based on service version compatibility.</p>
+<p>Check out this <a href="https://github.com/Ty-R/contract-testing-demo">demo project</a> if interested in seeing contract testing and Pact in action.</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/site/blog/relative-vs-absolute-test-coverage/">Relative vs Absolute Test Coverage</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/locator-strategies/">Locator Strategies</a></li>
 </ul>
 
 			</heading-anchors>
@@ -496,7 +496,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/test-scope-creep/` was built on 2025-01-11T12:55:03.233Z -->
+		<!-- This page `/blog/contract-testing/` was built on 2025-01-11T12:55:03.232Z -->
 		<script type="module" src="/site/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>
