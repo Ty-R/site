@@ -7,9 +7,9 @@ const eleventyNavigation = {
 
 ## About This Space
 
-This space is for sharing my opinions, thoughts, and advice on testing and quality assurance, drawn from my personal experience. The articles here won't follow any particular sequence but will focus on the quality assurance of web applications. 
+This space is for me to share guides and opinions on a variety of topics surrounding quality assurance of web applications.
 
-My aim is to keep articles short and to the point, while offering perspectives that encourage QA professionals and developers to think differently about testing and quality.
+My aim is to keep articles short and to the point, hopefully encouraging QA professionals and developers to think differently about quality, and quality assurance practices.
 
 ## About Me
 
