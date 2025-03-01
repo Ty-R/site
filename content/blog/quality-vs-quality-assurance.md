@@ -1,7 +1,7 @@
 ---
 title: Quality vs Quality Assurance
 description: Why the distinction matters
-date: 2024-12-17
+date: 2025-03-01
 tags: ['Process Improvement']
 ---
 
@@ -14,11 +14,11 @@ The difference between Quality and Quality Assurance may seem obvious, but in pr
     </div>
     <div style="flex: 1;">
         <strong>Quality Assurance</strong>
-        <p>The process(es) of ensuring quality by testing, monitoring, and refining to generally prevent defects and improve reliability</p>
+        <p>The process of ensuring quality by testing, monitoring, and refining to generally prevent defects and improve reliability</p>
     </div>
 </div>
 
-Simply put - **Quality** is the end result; **QA** is the process to achieve it. This distinction is important when defining what success looks like.
+Simply put - **Quality** is the end result and **QA** is the process to achieve it; this distinction is important when defining what success looks like.
 
 Here are some metrics that are often tied to quality, but shouldn't be mistaken for quality itself:
 
@@ -32,11 +32,12 @@ While these may not represent quality directly, they can be used to measure the 
 
 ## Measuring Quality
 
-Quality itself is often a challenge to measure as it's context-dependent, but here are some common approaches:
+Quality itself is a challenge to measure as it's heavily context-dependent, but we can start by breaking it down into objective attributes that reflect a product's quality, like:
 
-* User feedback or customer satisfaction
-* User retention rates
-* Defect escape rates
-* System up-time, response times, and similar performance metrics
-* Accessiblity audits and compliance adherence
-* DORA metrics (failure rates, recovery times)
+| Perspective    | Quality Attributes |
+| -------- | ------- |
+| End user  |   Performant, accessible, usable, responsive, seamless, portable  |
+| Engineering | Reliable, secure, scalable, maintainable, testable, resilient, interoperable, efficient     |
+| Business    | Cost-efficient, compliant, adaptable    |
+
+With these attributes defined, we can direct our focus on them induvidually to paint a clear picture of where a product currently is, and where it should be, in the context of each attribute.
