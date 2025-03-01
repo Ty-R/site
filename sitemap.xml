@@ -12,11 +12,6 @@
 	</url>
 	
 	<url>
-		<loc>/site/blog/quality-vs-quality-assurance/</loc>
-		<lastmod>2024-12-17</lastmod>
-	</url>
-	
-	<url>
 		<loc>/site/blog/continuous-performance-feedback/</loc>
 		<lastmod>2024-12-19</lastmod>
 	</url>
@@ -47,22 +42,27 @@
 	</url>
 	
 	<url>
+		<loc>/site/blog/quality-vs-quality-assurance/</loc>
+		<lastmod>2025-03-01</lastmod>
+	</url>
+	
+	<url>
 		<loc>/site/about/</loc>
-		<lastmod>2025-01-11</lastmod>
+		<lastmod>2025-03-01</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/blog/</loc>
-		<lastmod>2025-01-11</lastmod>
+		<lastmod>2025-03-01</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/</loc>
-		<lastmod>2025-01-11</lastmod>
+		<lastmod>2025-03-01</lastmod>
 	</url>
 	
 	<url>
 		<loc>/site/tags/</loc>
-		<lastmod>2025-01-11</lastmod>
+		<lastmod>2025-03-01</lastmod>
 	</url>
 </urlset>

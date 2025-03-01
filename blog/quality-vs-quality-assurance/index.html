@@ -306,6 +306,8 @@ table {
 table td,
 table th {
 	padding-right: 1em;
+	text-align: left;
+	padding: 6px 12px;
 }
 
 pre,
@@ -466,7 +468,7 @@ header {
 <h1 id="quality-vs-quality-assurance">Quality vs Quality Assurance</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-12-17">17 December 2024</time></li>
+	<li><time datetime="2025-03-01">01 March 2025</time></li>
 	<li><a href="/site/tags/process-improvement/" class="post-tag">Process Improvement</a></li>
 </ul>
 
@@ -478,10 +480,10 @@ header {
     </div>
     <div style="flex: 1;">
         <strong>Quality Assurance</strong>
-        <p>The process(es) of ensuring quality by testing, monitoring, and refining to generally prevent defects and improve reliability</p>
+        <p>The process of ensuring quality by testing, monitoring, and refining to generally prevent defects and improve reliability</p>
     </div>
 </div>
-<p>Simply put - <strong>Quality</strong> is the end result; <strong>QA</strong> is the process to achieve it. This distinction is important when defining what success looks like.</p>
+<p>Simply put - <strong>Quality</strong> is the end result and <strong>QA</strong> is the process to achieve it; this distinction is important when defining what success looks like.</p>
 <p>Here are some metrics that are often tied to quality, but shouldn't be mistaken for quality itself:</p>
 <ul>
 <li>Test coverage percentage</li>
@@ -492,17 +494,32 @@ header {
 </ul>
 <p>While these may not represent quality directly, they can be used to measure the strength of a QA process -- as a result of high test coverage, more frequent deployments, fewer reported issues, we'd <strong><em>expect</em></strong> a higher-quality product, but to be sure, we'd need additional metrics.</p>
 <h2 id="measuring-quality">Measuring Quality</h2>
-<p>Quality itself is often a challenge to measure as it's context-dependent, but here are some common approaches:</p>
-<ul>
-<li>User feedback or customer satisfaction</li>
-<li>User retention rates</li>
-<li>Defect escape rates</li>
-<li>System up-time, response times, and similar performance metrics</li>
-<li>Accessiblity audits and compliance adherence</li>
-<li>DORA metrics (failure rates, recovery times)</li>
-</ul>
+<p>Quality itself is a challenge to measure as it's heavily context-dependent, but we can start by breaking it down into objective attributes that reflect a product's quality, like:</p>
+<table>
+<thead>
+<tr>
+<th>Perspective</th>
+<th>Quality Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>End user</td>
+<td>Performant, accessible, usable, responsive, seamless, portable</td>
+</tr>
+<tr>
+<td>Engineering</td>
+<td>Reliable, secure, scalable, maintainable, testable, resilient, interoperable, efficient</td>
+</tr>
+<tr>
+<td>Business</td>
+<td>Cost-efficient, compliant, adaptable</td>
+</tr>
+</tbody>
+</table>
+<p>With these attributes defined, we can direct our focus on them induvidually to paint a clear picture of where a product currently is, and where it should be, in the context of each attribute.</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/relative-vs-absolute-test-coverage/">Relative vs Absolute Test Coverage</a></li><li class="links-nextprev-next">Next →<br><a href="/site/blog/continuous-performance-feedback/">Continuous Performance Feedback</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/site/blog/contract-testing/">Contract Testing</a></li>
 </ul>
 
 			</heading-anchors>
@@ -512,7 +529,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/quality-vs-quality-assurance/` was built on 2025-01-11T12:55:03.232Z -->
-		<script type="module" src="/site/dist/rJ3_G-2ArF.js"></script>
+		<!-- This page `/blog/quality-vs-quality-assurance/` was built on 2025-03-01T14:43:28.298Z -->
+		<script type="module" src="/site/dist/xbxy_EL6cU.js"></script>
 	</body>
 </html>
